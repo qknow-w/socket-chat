@@ -59,7 +59,7 @@ io.sockets.on('connection', (socket) => {
     }
   })
 
-        /**   公共消息 */
+  // 公共消息
   socket.on('public message', function (obj) {
     console.log('public message msg', obj)
     // let timestamp = new Date().getTime()
