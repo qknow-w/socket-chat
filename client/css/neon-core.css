@@ -138,13 +138,7 @@ body {
 }
 /* Table Tools */
 #chat {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 280px;
-  background: #303641;
-  z-index: 5;
+  
 }
 #chat.fixed {
   min-height: 0 !important;
@@ -152,6 +146,8 @@ body {
 #chat .chat-inner {
   overflow: auto;
   height: 100%;
+  width: 280px;
+  background: #303641;
 }
 #chat .chat-header {
   font-size: 16px;
@@ -286,7 +282,8 @@ body {
 }
 #chat .chat-conversation {
   position: absolute;
-  right: 280px;
+  top:20%; left:50%;
+  margin-left:-100px;
   width: 340px;
   background: #2b303a;
   -webkit-border-radius: 3px 0 0 3px;
@@ -295,8 +292,7 @@ body {
   -moz-background-clip: padding;
   border-radius: 3px 0 0 3px;
   background-clip: padding-box;
-  display: none;
-  opacity: 0;
+  opacity: 1;
 }
 #chat .chat-conversation .conversation-header {
   padding: 20px 24px;
