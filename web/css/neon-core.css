@@ -322,6 +322,39 @@ body {
   overflow: auto;
   height: 250px;
 }
+#chat .chat-conversation .conversation-body > li {
+  padding: 20px 24px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+#chat .chat-conversation .conversation-body > li:before,
+#chat .chat-conversation .conversation-body > li:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+#chat .chat-conversation .conversation-body > li:after {
+  clear: both;
+}
+#chat .chat-conversation .conversation-body > li.odd,
+#chat .chat-conversation .conversation-body > li.even,
+#chat .chat-conversation .conversation-body > li.opponent {
+  background: #343a45;
+}
+#chat .chat-conversation .conversation-body > li.unread {
+  background: #3d4451;
+}
+#chat .chat-conversation .conversation-body > li .user {
+  font-weight: bold;
+  color: #fff;
+}
+#chat .chat-conversation .conversation-body > li .time {
+  float: right;
+  font-style: italic;
+  color: rgba(190, 192, 194, 0.8);
+  font-size: 11px;
+}
 #chat .chat-conversation .conversation-body::-webkit-scrollbar {
   width: 5px;
 }

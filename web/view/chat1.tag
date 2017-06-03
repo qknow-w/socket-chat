@@ -12,11 +12,13 @@
 
             <div class="chat-group" id="group-1">
                 <strong>Favorites</strong>
-                <a href="#" id="sample-user-123" onclick={ open } class={} data-conversation-history="#sample_history"><span class="user-status is-online"></span> <em>Catherine J. Watkins</em></a>
+                <a href="#" onclick={ open } each={ items } ><span class={ status.icon }></span> <em>{ name }</em></a>
+                <!--
                 <a href="#"><span class="user-status is-online"></span> <em>Nicholas R. Walker</em></a>
                 <a href="#"><span class="user-status is-busy"></span> <em>Susan J. Best</em></a>
                 <a href="#"><span class="user-status is-offline"></span> <em>Brandon S. Young</em></a>
                 <a href="#"><span class="user-status is-idle"></span> <em>Fernando G. Olson</em></a>
+                -->
             </div>
 
             <div class="chat-group" id="group-2">
@@ -38,31 +40,84 @@
         </div>
 
         <!-- conversation template-->
-        <div class="chat-conversation draggable">
+        <div class="chat-conversation draggable" if={ message.isVisible }>
 
             <div class="conversation-header">
-                <a href="#" class="conversation-close"><i class="entypo-cancel"></i></a>
+                <a href="#" onclick={ close } class="conversation-close"><i class="entypo-cancel"></i></a>
 
-                <span class="user-status"></span>
-                <span class="display-name"></span>
-                <small></small>
+                <span class={ message.status.icon }></span>
+                <span class="display-name">{ message.name }</span>
+                <small>{ message.status.text }</small>
             </div>
 
             <ul class="conversation-body">
+                <li class="odd">
+                    <span class="user">Art Ramadani</span><p>Are you here?</p><span class="time">09:00</span>
+                </li>
             </ul>
 
             <div class="chat-textarea">
-                <textarea class="form-control autogrow" placeholder="Type your message"></textarea>
+                <textarea class="form-control autogrow" onkeydown={ sendMessage } placeholder="Type your message"></textarea>
             </div>
         </div>
          
     </div>
     <script>
+        // isVisible message options
+        this.message = {
+            isVisible:false,
+            name:'',
+            status:{
+                icon:'',
+                text:''
+            }
+        } 
         
 
+        // group item
+        this.items = [
+            {id:'1', name:'Catherine J. Watkins1',status:{icon:'user-status is-busy',text:'busy'}},
+            {id:'2', name:'Catherine J. Watkins2',status:{icon:'user-status is-online',text:'online'}},
+            {id:'3', name:'Catherine J. Watkins3',status:{icon:'user-status is-busy',text:'busy'}},
+        ]
+
+        /**
+         * open message window
+         *
+         */
         open(e) {
-            console.log('open',e.currentTarget)
+            console.log('open',e.item)
+            this.message = {
+            isVisible:true,
+            name:e.item.name,
+            status:{
+                    icon:e.item.status.icon,
+                    text:e.item.status.text
+                }
+            } 
+
         }
+
+        /**
+         * close message window
+         *
+         */
+        close(e) {
+            console.log('close',e)
+            this.message.isVisible = false
+        }
+
+        sendMessage(e){
+            console.log('sendMessage',e)
+            switch(e.keyCode){
+                case 13: // send message
+                    break
+                case 27:
+                    this.message.isVisible = false
+                    break
+                default: break     
+            }
+        }       
         
         this.on('mount', function() {
             console.log('mount','mount')
