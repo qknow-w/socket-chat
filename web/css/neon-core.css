@@ -145,7 +145,7 @@ body {
 }
 #chat .chat-inner {
   overflow: auto;
-  height: 540px;
+  height: 100%;
   width: 280px;
   background: #303641;
 }
