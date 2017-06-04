@@ -138,14 +138,14 @@ body {
 }
 /* Table Tools */
 #chat {
-  
+  height: 100%;
 }
 #chat.fixed {
   min-height: 0 !important;
 }
 #chat .chat-inner {
   overflow: auto;
-  height: 100%;
+  height: 540px;
   width: 280px;
   background: #303641;
 }
